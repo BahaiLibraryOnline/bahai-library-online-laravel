@@ -58,6 +58,11 @@
                         Searches
                         </x-dropdown-link>
                         @endcan
+                        @can('view-any', App\Models\Edition::class)
+                        <x-dropdown-link href="{{ route('editions.index') }}">
+                        Editions
+                        </x-dropdown-link>
+                        @endcan
                 </x-nav-dropdown>
 
             </div>
@@ -224,6 +229,11 @@
                 @can('view-any', App\Models\Search::class)
                 <x-jet-responsive-nav-link href="{{ route('search.index') }}">
                 Searches
+                </x-jet-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Edition::class)
+                <x-jet-responsive-nav-link href="{{ route('editions.index') }}">
+                Editions
                 </x-jet-responsive-nav-link>
                 @endcan
 
