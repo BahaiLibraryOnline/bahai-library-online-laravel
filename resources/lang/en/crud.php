@@ -139,4 +139,25 @@ return [
             'query' => 'Query',
         ],
     ],
+
+    'editions' => [
+        'name' => 'Editions',
+        'index_title' => 'Editions List',
+        'create_title' => 'Create Edition',
+        'edit_title' => 'Edit Edition',
+        'show_title' => 'Show Edition',
+        'inputs' => [
+            'title' => 'Title',
+            'subtitle' => 'Subtitle',
+            'title_parent' => 'Title Parent',
+            'volume' => 'Volume',
+            'page_range' => 'Page Range',
+            'page_total' => 'Page Total',
+            'publisher_name' => 'Publisher Name',
+            'publisher_city' => 'Publisher City',
+            'date' => 'Date',
+            'isbn' => 'Isbn',
+            'document_id' => 'Document',
+        ],
+    ],
 ];
