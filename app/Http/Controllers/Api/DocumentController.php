@@ -10,6 +10,7 @@ use App\Http\Resources\DocumentCollection;
 use App\Http\Requests\DocumentStoreRequest;
 use App\Http\Requests\DocumentUpdateRequest;
 
+#[OpenApi\PathItem]
 class DocumentController extends Controller
 {
     /**

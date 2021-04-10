@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\DocumentStoreRequest;
 use App\Http\Requests\DocumentUpdateRequest;
 
+#[OpenApi\PathItem]
 class DocumentController extends Controller
 {
     /**

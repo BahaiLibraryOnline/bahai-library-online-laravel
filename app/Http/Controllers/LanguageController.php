@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LanguageStoreRequest;
 use App\Http\Requests\LanguageUpdateRequest;
 
+#[OpenApi\PathItem]
 class LanguageController extends Controller
 {
     /**

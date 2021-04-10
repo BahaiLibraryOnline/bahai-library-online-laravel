@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\TagCollection;
 
+#[OpenApi\PathItem]
 class DocumentTagsController extends Controller
 {
     /**

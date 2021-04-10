@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\TagStoreRequest;
 use App\Http\Requests\TagUpdateRequest;
 
+#[OpenApi\PathItem]
 class TagController extends Controller
 {
     /**

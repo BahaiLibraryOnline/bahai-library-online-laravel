@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\LocationCollection;
 
+#[OpenApi\PathItem]
 class DocumentLocationsController extends Controller
 {
     /**

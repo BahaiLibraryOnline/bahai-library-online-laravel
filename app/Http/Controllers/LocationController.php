@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LocationStoreRequest;
 use App\Http\Requests\LocationUpdateRequest;
 
+#[OpenApi\PathItem]
 class LocationController extends Controller
 {
     /**

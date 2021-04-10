@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreatorStoreRequest;
 use App\Http\Requests\CreatorUpdateRequest;
 
+#[OpenApi\PathItem]
 class CreatorController extends Controller
 {
     /**

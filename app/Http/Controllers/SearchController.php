@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\SearchStoreRequest;
 use App\Http\Requests\SearchUpdateRequest;
 
+#[OpenApi\PathItem]
 class SearchController extends Controller
 {
     /**

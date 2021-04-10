@@ -11,6 +11,7 @@ use App\Http\Resources\UserCollection;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 
+#[OpenApi\PathItem]
 class UserController extends Controller
 {
     /**

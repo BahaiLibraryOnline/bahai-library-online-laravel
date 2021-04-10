@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CollectionStoreRequest;
 use App\Http\Requests\CollectionUpdateRequest;
 
+#[OpenApi\PathItem]
 class CollectionController extends Controller
 {
     /**

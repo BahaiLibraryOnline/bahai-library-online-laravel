@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\EditionResource;
 use App\Http\Resources\EditionCollection;
 
+#[OpenApi\PathItem]
 class DocumentEditionsController extends Controller
 {
     /**
