@@ -52,6 +52,21 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "dev:phpstan": "@php vendor/bin/phpstan analyse",
+        "dev:phpinsights-fix": "@php artisan insights -n --fix",
+        "dev:phpinsights": "@php artisan insights -n",
+        "dev:rector-fix": "@php vendor/bin/rector process",
+        "dev:rector": "@php vendor/bin/rector process --dry-run",
+        "dev:phpcbf": "@php vendor/bin/phpcbf .",
+        "dev:phpcs": "@php vendor/bin/phpcs .",
+        "dev:test": "@php artisan test",
+        "dev:build": [
+            "@dev:phpcs",
+            "@dev:rector",
+            "@dev:phpstan",
+            "@dev:phpinsights",
+            "@dev:test"
         ]
     },
     "extra": {
