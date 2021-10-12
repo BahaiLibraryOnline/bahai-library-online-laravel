@@ -3,15 +3,15 @@
 namespace Tests\Feature\Api;
 
 use App\Models\User;
-use App\Models\Edition;
 use App\Models\Document;
+use App\Models\Activity;
 
 use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class DocumentEditionsTest extends TestCase
+class DocumentActivitiesTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
@@ -29,46 +29,45 @@ class DocumentEditionsTest extends TestCase
     /**
      * @test
      */
-    public function it_gets_document_editions()
+    public function it_gets_document_activities()
     {
         $document = Document::factory()->create();
-        $editions = Edition::factory()
+        $activities = Activity::factory()
             ->count(2)
             ->create([
                 'document_id' => $document->id,
             ]);
 
         $response = $this->getJson(
-            route('api.documents.editions.index', $document)
+            route('api.documents.activities.index', $document)
         );
 
-        $response->assertOk()->assertSee($editions[0]->title);
+        $response->assertOk()->assertSee($activities[0]->comment);
     }
 
     /**
      * @test
      */
-    public function it_stores_the_document_editions()
+    public function it_stores_the_document_activities()
     {
         $document = Document::factory()->create();
-        $data = Edition::factory()
+        $data = Activity::factory()
             ->make([
                 'document_id' => $document->id,
             ])
             ->toArray();
 
         $response = $this->postJson(
-            route('api.documents.editions.store', $document),
+            route('api.documents.activities.store', $document),
             $data
         );
 
-        unset($data['date']);
-        $this->assertDatabaseHas('editions', $data);
+        $this->assertDatabaseHas('activities', $data);
 
         $response->assertStatus(201)->assertJsonFragment($data);
 
-        $edition = Edition::latest('id')->first();
+        $activity = Activity::latest('id')->first();
 
-        $this->assertEquals($document->id, $edition->document_id);
+        $this->assertEquals($document->id, $activity->document_id);
     }
 }

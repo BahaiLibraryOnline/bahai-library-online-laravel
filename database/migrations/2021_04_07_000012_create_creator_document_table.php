@@ -14,8 +14,8 @@ class CreateCreatorDocumentTable extends Migration
     public function up()
     {
         Schema::create('creator_document', function (Blueprint $table) {
-            $table->unsignedBigInteger('creator_id');
             $table->unsignedBigInteger('document_id');
+            $table->unsignedBigInteger('creator_id');
         });
     }
 

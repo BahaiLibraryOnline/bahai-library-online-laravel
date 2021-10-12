@@ -2,12 +2,14 @@
 
 namespace Tests\Feature\Api;
 
+use Tests\TestCase;
 use App\Models\User;
+
 use App\Models\Edition;
 
 use App\Models\Document;
-
-use Tests\TestCase;
+use Laravel\Sanctum\Sanctum;
+use Illuminate\Support\Carbon;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -18,6 +20,10 @@ class EditionTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
+        $user = User::factory()->create(['email' => 'admin@admin.com']);
+
+        Sanctum::actingAs($user, [], 'web');
 
         $this->withoutExceptionHandling();
     }
@@ -41,15 +47,18 @@ class EditionTest extends TestCase
      */
     public function it_stores_the_edition()
     {
+        $date = new Carbon($this->faker->date());
+
         $data = Edition::factory()
             ->make()
             ->toArray();
+        $data['date'] = $date->format('Y-m-d H:i:s');
 
         $response = $this->postJson(route('api.editions.store'), $data);
 
         $this->assertDatabaseHas('editions', $data);
 
-        $response->assertStatus(201)->assertJsonFragment($data);
+        $response->assertStatus(201)->assertJsonFragment(['date' => $date] + $data);
     }
 
     /**
@@ -61,6 +70,8 @@ class EditionTest extends TestCase
 
         $document = Document::factory()->create();
 
+        $date = new Carbon($this->faker->date());
+
         $data = [
             'title' => $this->faker->sentence(10),
             'subtitle' => $this->faker->text(255),
@@ -70,7 +81,7 @@ class EditionTest extends TestCase
             'page_total' => $this->faker->word(255),
             'publisher_name' => $this->faker->text(255),
             'publisher_city' => $this->faker->text(255),
-            'date' => $this->faker->date,
+            'date' => $date->format('Y-m-d H:i:s'),
             'isbn' => $this->faker->text(255),
             'document_id' => $document->id,
         ];
@@ -84,7 +95,7 @@ class EditionTest extends TestCase
 
         $this->assertDatabaseHas('editions', $data);
 
-        $response->assertOk()->assertJsonFragment($data);
+        $response->assertOk()->assertJsonFragment(['date' => $date] + $data);
     }
 
     /**

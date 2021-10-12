@@ -3,15 +3,15 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Language;
+use App\Models\Activity;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class LanguagePolicy
+class ActivityPolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the language can view any models.
+     * Determine whether the activity can view any models.
      *
      * @param  App\Models\User  $user
      * @return mixed
@@ -22,19 +22,19 @@ class LanguagePolicy
     }
 
     /**
-     * Determine whether the language can view the model.
+     * Determine whether the activity can view the model.
      *
      * @param  App\Models\User  $user
-     * @param  App\Models\Language  $model
+     * @param  App\Models\Activity  $model
      * @return mixed
      */
-    public function view(User $user, Language $model)
+    public function view(User $user, Activity $model)
     {
         return true;
     }
 
     /**
-     * Determine whether the language can create models.
+     * Determine whether the activity can create models.
      *
      * @param  App\Models\User  $user
      * @return mixed
@@ -45,25 +45,25 @@ class LanguagePolicy
     }
 
     /**
-     * Determine whether the language can update the model.
+     * Determine whether the activity can update the model.
      *
      * @param  App\Models\User  $user
-     * @param  App\Models\Language  $model
+     * @param  App\Models\Activity  $model
      * @return mixed
      */
-    public function update(User $user, Language $model)
+    public function update(User $user, Activity $model)
     {
         return true;
     }
 
     /**
-     * Determine whether the language can delete the model.
+     * Determine whether the activity can delete the model.
      *
      * @param  App\Models\User  $user
-     * @param  App\Models\Language  $model
+     * @param  App\Models\Activity  $model
      * @return mixed
      */
-    public function delete(User $user, Language $model)
+    public function delete(User $user, Activity $model)
     {
         return true;
     }
@@ -72,7 +72,7 @@ class LanguagePolicy
      * Determine whether the user can delete multiple instances of the model.
      *
      * @param  App\Models\User  $user
-     * @param  App\Models\Language  $model
+     * @param  App\Models\Activity  $model
      * @return mixed
      */
     public function deleteAny(User $user)
@@ -81,25 +81,25 @@ class LanguagePolicy
     }
 
     /**
-     * Determine whether the language can restore the model.
+     * Determine whether the activity can restore the model.
      *
      * @param  App\Models\User  $user
-     * @param  App\Models\Language  $model
+     * @param  App\Models\Activity  $model
      * @return mixed
      */
-    public function restore(User $user, Language $model)
+    public function restore(User $user, Activity $model)
     {
         return false;
     }
 
     /**
-     * Determine whether the language can permanently delete the model.
+     * Determine whether the activity can permanently delete the model.
      *
      * @param  App\Models\User  $user
-     * @param  App\Models\Language  $model
+     * @param  App\Models\Activity  $model
      * @return mixed
      */
-    public function forceDelete(User $user, Language $model)
+    public function forceDelete(User $user, Activity $model)
     {
         return false;
     }

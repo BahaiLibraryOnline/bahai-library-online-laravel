@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DocumentCollection;
 
-#[OpenApi\PathItem]
 class CreatorDocumentsController extends Controller
 {
     /**

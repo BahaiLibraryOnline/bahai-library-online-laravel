@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Search;
+use App\Models\Activity;
 use Illuminate\Database\Seeder;
 
-class SearchSeeder extends Seeder
+class ActivitySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class SearchSeeder extends Seeder
      */
     public function run()
     {
-        Search::factory()
+        Activity::factory()
             ->count(5)
             ->create();
     }

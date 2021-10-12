@@ -69,6 +69,18 @@ class EditionPolicy
     }
 
     /**
+     * Determine whether the user can delete multiple instances of the model.
+     *
+     * @param  App\Models\User  $user
+     * @param  App\Models\Edition  $model
+     * @return mixed
+     */
+    public function deleteAny(User $user)
+    {
+        return true;
+    }
+
+    /**
      * Determine whether the edition can restore the model.
      *
      * @param  App\Models\User  $user

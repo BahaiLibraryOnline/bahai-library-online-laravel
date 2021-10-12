@@ -17,10 +17,10 @@ class CreateCreatorsTable extends Migration
             $table->bigIncrements('id');
             $table->string('first_names')->nullable();
             $table->string('last_names')->nullable();
-            $table->boolean('author')->nullable();
-            $table->boolean('editor')->nullable();
-            $table->boolean('translator')->nullable();
-            $table->boolean('compiler')->nullable();
+            $table->boolean('is_author')->nullable();
+            $table->boolean('is_editor')->nullable();
+            $table->boolean('is_translator')->nullable();
+            $table->boolean('is_compiler')->nullable();
 
             $table->timestamps();
         });

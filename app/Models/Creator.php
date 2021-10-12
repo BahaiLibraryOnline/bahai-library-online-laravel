@@ -14,19 +14,19 @@ class Creator extends Model
     protected $fillable = [
         'first_names',
         'last_names',
-        'author',
-        'editor',
-        'translator',
-        'compiler',
+        'is_author',
+        'is_editor',
+        'is_translator',
+        'is_compiler',
     ];
 
     protected $searchableFields = ['*'];
 
     protected $casts = [
-        'author' => 'boolean',
-        'editor' => 'boolean',
-        'translator' => 'boolean',
-        'compiler' => 'boolean',
+        'is_author' => 'boolean',
+        'is_editor' => 'boolean',
+        'is_translator' => 'boolean',
+        'is_compiler' => 'boolean',
     ];
 
     public function documents()

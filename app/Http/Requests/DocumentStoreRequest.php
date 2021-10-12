@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -33,23 +32,15 @@ class DocumentStoreRequest extends FormRequest
             'file_url' => ['nullable', 'max:255', 'string'],
             'blurb' => ['nullable', 'max:255', 'string'],
             'content_html' => ['nullable', 'max:255', 'string'],
-            'content_size' => ['nullable', 'max:255'],
+            'content_size' => ['nullable', 'integer', 'min:0'],
             'edit_quality' => ['nullable', 'in:high,medium,low'],
             'formatting_quality' => ['nullable', 'in:high,medium,low'],
             'publication_permission' => [
                 'required',
-                'in:author,editor,publisher,translator,recipient,fair use,',
+                'in:author,editor,publisher,translator,recipient,fair use,unknown',
             ],
             'notes' => ['nullable', 'max:255', 'string'],
             'input_type' => ['required', 'in:scanned,typed,transcribed'],
-            'input_by' => ['nullable', 'max:255'],
-            'input_date' => ['nullable', 'date', 'date'],
-            'proof_by' => ['nullable', 'max:255'],
-            'proof_date' => ['required', 'date', 'date'],
-            'format_by' => ['required', 'max:255'],
-            'format_date' => ['required', 'date', 'date'],
-            'post_by' => ['required', 'max:255'],
-            'post_date' => ['required', 'date', 'date'],
             'publication_approval' => [
                 'required',
                 'in:approved,rejected,pending',

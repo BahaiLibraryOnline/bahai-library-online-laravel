@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignsToCollectionDocumentTable extends Migration
+class AddForeignsToActivitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class AddForeignsToCollectionDocumentTable extends Migration
      */
     public function up()
     {
-        Schema::table('collection_document', function (Blueprint $table) {
-            $table
-                ->foreign('collection_id')
-                ->references('id')
-                ->on('collections');
-
+        Schema::table('activities', function (Blueprint $table) {
             $table
                 ->foreign('document_id')
                 ->references('id')
                 ->on('documents');
+
+            $table
+                ->foreign('user_id')
+                ->references('id')
+                ->on('users');
         });
     }
 
@@ -33,9 +33,9 @@ class AddForeignsToCollectionDocumentTable extends Migration
      */
     public function down()
     {
-        Schema::table('collection_document', function (Blueprint $table) {
-            $table->dropForeign(['collection_id']);
+        Schema::table('activities', function (Blueprint $table) {
             $table->dropForeign(['document_id']);
+            $table->dropForeign(['user_id']);
         });
     }
 }

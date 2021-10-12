@@ -15,14 +15,14 @@ class AddForeignsToCreatorDocumentTable extends Migration
     {
         Schema::table('creator_document', function (Blueprint $table) {
             $table
-                ->foreign('creator_id')
-                ->references('id')
-                ->on('creators');
-
-            $table
                 ->foreign('document_id')
                 ->references('id')
                 ->on('documents');
+
+            $table
+                ->foreign('creator_id')
+                ->references('id')
+                ->on('creators');
         });
     }
 
@@ -34,8 +34,8 @@ class AddForeignsToCreatorDocumentTable extends Migration
     public function down()
     {
         Schema::table('creator_document', function (Blueprint $table) {
-            $table->dropForeign(['creator_id']);
             $table->dropForeign(['document_id']);
+            $table->dropForeign(['creator_id']);
         });
     }
 }

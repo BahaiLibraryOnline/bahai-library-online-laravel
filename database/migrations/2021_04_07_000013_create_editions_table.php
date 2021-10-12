@@ -15,6 +15,7 @@ class CreateEditionsTable extends Migration
     {
         Schema::create('editions', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('document_id');
             $table->string('title');
             $table->string('subtitle')->nullable();
             $table->string('title_parent')->nullable();
@@ -25,7 +26,6 @@ class CreateEditionsTable extends Migration
             $table->string('publisher_city')->nullable();
             $table->date('date')->nullable();
             $table->string('isbn')->nullable();
-            $table->unsignedBigInteger('document_id');
 
             $table->timestamps();
         });

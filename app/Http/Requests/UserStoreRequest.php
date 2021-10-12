@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests;
 
 use Illuminate\Validation\Rule;
@@ -29,7 +28,6 @@ class UserStoreRequest extends FormRequest
             'email' => ['required', 'unique:users', 'email'],
             'password' => ['required'],
             'status' => ['required', 'in:contributor,editor,admin'],
-            'roles' => 'array',
         ];
     }
 }

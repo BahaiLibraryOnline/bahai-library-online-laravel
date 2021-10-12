@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDocumentUserTable extends Migration
+class CreateCollectionDocumentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateDocumentUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('document_user', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
+        Schema::create('collection_document', function (Blueprint $table) {
             $table->unsignedBigInteger('document_id');
+            $table->unsignedBigInteger('collection_id');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateDocumentUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('document_user');
+        Schema::dropIfExists('collection_document');
     }
 }
