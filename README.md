@@ -51,8 +51,17 @@ Run using composer:
 composer dev:build
 ```
 
+### Other tools
+
+Github actions simulation can be achieved through [nektos/act][] if you have [Docker][] installed.
+```shell
+act -P ubuntu-latest=shivammathur/node:latest
+```
+
 [PHPInsights]: https://phpinsights.com/
 [PHPCS]: https://github.com/squizlabs/PHP_CodeSniffer
 [PHPStan]: https://github.com/phpstan/phpstan
 [Larastan]: https://github.com/nunomaduro/larastan
 [Rector]: https://github.com/rectorphp/rector
+[nektos/act]: https://github.com/nektos/act
+[Docker]: https://docs.docker.com/
