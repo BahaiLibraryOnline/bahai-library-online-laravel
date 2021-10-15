@@ -58,8 +58,8 @@
         "dev:phpinsights": "@php artisan insights -n",
         "dev:rector-fix": "@php vendor/bin/rector process",
         "dev:rector": "@php vendor/bin/rector process --dry-run",
-        "dev:phpcbf": "@php vendor/bin/phpcbf .",
-        "dev:phpcs": "@php vendor/bin/phpcs .",
+        "dev:phpcbf": "@php vendor/bin/phpcbf",
+        "dev:phpcs": "@php vendor/bin/phpcs",
         "dev:test": "@php artisan test",
         "dev:build": [
             "@dev:phpcbf",
