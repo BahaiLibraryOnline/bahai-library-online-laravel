@@ -26,7 +26,7 @@ jobs:
           php-version: ${{ matrix.php-versions }}
           extensions: json, mbstring
           coverage: none
-          tools: composer:v2
+          tools: composer:v2, cs2pr
         env:
           fail-fast: true
 
@@ -51,7 +51,7 @@ jobs:
         run: php artisan key:generate
 
       - name: Phpcs
-        run: vendor/bin/phpcs .
+        run: vendor/bin/phpcs -q --report=checkstyle | cs2pr
 
       - name: Rector
         run: vendor/bin/rector --dry-run
