@@ -83,6 +83,7 @@ return [
         ForbiddenNormalClasses::class,
         ForbiddenPublicPropertySniff::class,
         ForbiddenTraits::class,
+        LineLengthSniff::class, // check by php_codesniffer
     ],
 
     'config' => [
@@ -91,10 +92,6 @@ return [
         ],
         CyclomaticComplexityIsHigh::class => [
             'maxComplexity' => 10,
-        ],
-        LineLengthSniff::class => [
-            'lineLimit' => 120,
-            'absoluteLineLimit' => 160,
         ],
         FunctionLengthSniff::class => [
             'maxLinesLength' => 25,
@@ -113,11 +110,11 @@ return [
     */
 
     'requirements' => [
-       'min-quality' => 0,
-       'min-complexity' => 0,
-       'min-architecture' => 0,
-       'min-style' => 100,
-       'disable-security-check' => false,
+        'min-quality' => 0,
+        'min-complexity' => 0,
+        'min-architecture' => 0,
+        'min-style' => 100,
+        'disable-security-check' => false,
     ],
 
     /*

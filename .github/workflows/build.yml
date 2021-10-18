@@ -50,11 +50,11 @@ jobs:
       - name: Set Laravel application key
         run: php artisan key:generate
 
-      - name: Phpcs
-        run: vendor/bin/phpcs -q --report=checkstyle | cs2pr
-
       - name: Rector
         run: vendor/bin/rector --dry-run
+
+      - name: Code style
+        run: vendor/bin/phpcs -q --report=checkstyle | cs2pr
 
       - name: Static analysis
         run: vendor/bin/phpstan analyse --no-progress --no-interaction --ansi
