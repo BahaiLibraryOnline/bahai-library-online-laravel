@@ -23,6 +23,7 @@ class DocumentFactory extends Factory
     public function definition()
     {
         return [
+            'slug' => Str::slug($this->faker->text),
             'is_pdf' => $this->faker->boolean,
             'is_audio' => $this->faker->boolean,
             'is_image' => $this->faker->boolean,
@@ -31,16 +32,12 @@ class DocumentFactory extends Factory
             'file_url' => $this->faker->text(255),
             'blurb' => $this->faker->text,
             'content_html' => $this->faker->text,
-            'content_size' => $this->faker->word,
+            'content_size' => $this->faker->randomNumber,
             'edit_quality' => 'high',
             'formatting_quality' => 'high',
             'publication_permission' => 'author',
             'notes' => $this->faker->text,
             'input_type' => 'scanned',
-            'input_date' => $this->faker->date,
-            'proof_date' => $this->faker->date,
-            'format_date' => $this->faker->date,
-            'post_date' => $this->faker->date,
             'publication_approval' => 'approved',
             'views' => 0,
         ];

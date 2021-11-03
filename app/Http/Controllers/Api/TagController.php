@@ -10,7 +10,6 @@ use App\Http\Resources\TagCollection;
 use App\Http\Requests\TagStoreRequest;
 use App\Http\Requests\TagUpdateRequest;
 
-#[OpenApi\PathItem]
 class TagController extends Controller
 {
     /**

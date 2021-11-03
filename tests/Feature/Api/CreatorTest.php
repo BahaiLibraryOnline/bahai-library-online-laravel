@@ -22,8 +22,6 @@ class CreatorTest extends TestCase
 
         Sanctum::actingAs($user, [], 'web');
 
-        $this->seed(\Database\Seeders\PermissionsSeeder::class);
-
         $this->withoutExceptionHandling();
     }
 
@@ -67,10 +65,10 @@ class CreatorTest extends TestCase
         $data = [
             'first_names' => $this->faker->text(255),
             'last_names' => $this->faker->text(255),
-            'author' => $this->faker->boolean,
-            'editor' => $this->faker->boolean,
-            'translator' => $this->faker->boolean,
-            'compiler' => $this->faker->boolean,
+            'is_author' => $this->faker->boolean,
+            'is_editor' => $this->faker->boolean,
+            'is_translator' => $this->faker->boolean,
+            'is_compiler' => $this->faker->boolean,
         ];
 
         $response = $this->putJson(

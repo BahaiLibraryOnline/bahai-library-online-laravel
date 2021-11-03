@@ -36,18 +36,10 @@ class CreateDocumentsTable extends Migration
                 'translator',
                 'recipient',
                 'fair use',
-                '',
+                'unknown',
             ]);
             $table->text('notes')->nullable();
             $table->enum('input_type', ['scanned', 'typed', 'transcribed']);
-            $table->foreignId('input_by')->nullable();
-            $table->date('input_date')->nullable();
-            $table->foreignId('proof_by')->nullable();
-            $table->date('proof_date');
-            $table->foreignId('format_by');
-            $table->date('format_date');
-            $table->foreignId('post_by');
-            $table->date('post_date');
             $table->enum('publication_approval', [
                 'approved',
                 'rejected',

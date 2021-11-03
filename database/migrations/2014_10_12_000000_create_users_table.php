@@ -22,9 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('remember_token', 100)->nullable();
             $table->text('two_factor_secret')->nullable();
             $table->text('two_factor_recovery_codes')->nullable();
-            $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
-            $table->enum('status', ['Contributor', 'Editor', 'Admin']);
+            $table->enum('status', ['contributor', 'editor', 'admin']);
 
             $table->timestamps();
         });

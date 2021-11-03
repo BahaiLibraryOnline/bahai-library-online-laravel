@@ -11,7 +11,6 @@ use App\Http\Resources\UserCollection;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 
-#[OpenApi\PathItem]
 class UserController extends Controller
 {
     /**
@@ -44,8 +43,6 @@ class UserController extends Controller
         $validated['password'] = Hash::make($validated['password']);
 
         $user = User::create($validated);
-
-        $user->syncRoles($request->roles);
 
         return new UserResource($user);
     }
@@ -80,8 +77,6 @@ class UserController extends Controller
         }
 
         $user->update($validated);
-
-        $user->syncRoles($request->roles);
 
         return new UserResource($user);
     }
