@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
 
     'collections' => [
@@ -20,10 +22,10 @@ return [
 
             'tags' => [
 
-                // [
-                //    'name' => 'user',
-                //    'description' => 'Application users',
-                // ],
+                [
+                    'name' => 'auth',
+                    'description' => 'Application auth related endpoints',
+                ],
 
             ],
 
