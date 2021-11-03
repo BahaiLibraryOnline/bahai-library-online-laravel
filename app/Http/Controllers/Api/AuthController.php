@@ -10,7 +10,6 @@ use App\Http\Controllers\Controller;
 use App\OpenApi\RequestBodies\LoginUserRequestBody;
 use App\OpenApi\Responses\Login\ErrorValidationResponse;
 use App\OpenApi\Responses\Login\SuccessfulLoginResponse;
-use App\OpenApi\Responses\Login\ValidationLoginErrorsResponse;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
