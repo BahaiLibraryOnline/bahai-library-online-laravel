@@ -21,8 +21,6 @@ class UserTest extends TestCase
 
         Sanctum::actingAs($user, [], 'web');
 
-        $this->seed(\Database\Seeders\PermissionsSeeder::class);
-
         $this->withoutExceptionHandling();
     }
 
@@ -54,7 +52,6 @@ class UserTest extends TestCase
 
         unset($data['password']);
         unset($data['email_verified_at']);
-        unset($data['current_team_id']);
         unset($data['profile_photo_path']);
 
         $this->assertDatabaseHas('users', $data);
@@ -72,7 +69,7 @@ class UserTest extends TestCase
         $data = [
             'name' => $this->faker->name,
             'email' => $this->faker->email,
-            'status' => 'Contributor',
+            'status' => 'contributor',
         ];
 
         $data['password'] = \Str::random('8');
@@ -81,7 +78,6 @@ class UserTest extends TestCase
 
         unset($data['password']);
         unset($data['email_verified_at']);
-        unset($data['current_team_id']);
         unset($data['profile_photo_path']);
 
         $data['id'] = $user->id;

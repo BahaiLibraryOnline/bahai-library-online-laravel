@@ -12,6 +12,7 @@ class Edition extends Model
     use Searchable;
 
     protected $fillable = [
+        'document_id',
         'title',
         'subtitle',
         'title_parent',
@@ -22,7 +23,6 @@ class Edition extends Model
         'publisher_city',
         'date',
         'isbn',
-        'document_id',
     ];
 
     protected $searchableFields = ['*'];

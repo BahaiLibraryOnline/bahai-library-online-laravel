@@ -10,7 +10,6 @@ use App\Http\Resources\CollectionCollection;
 use App\Http\Requests\CollectionStoreRequest;
 use App\Http\Requests\CollectionUpdateRequest;
 
-#[OpenApi\PathItem]
 class CollectionController extends Controller
 {
     /**

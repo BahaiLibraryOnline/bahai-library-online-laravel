@@ -23,8 +23,6 @@ class DocumentEditionsTest extends TestCase
 
         Sanctum::actingAs($user, [], 'web');
 
-        $this->seed(\Database\Seeders\PermissionsSeeder::class);
-
         $this->withoutExceptionHandling();
     }
 
@@ -64,18 +62,7 @@ class DocumentEditionsTest extends TestCase
             $data
         );
 
-        unset($data['title']);
-        unset($data['subtitle']);
-        unset($data['title_parent']);
-        unset($data['volume']);
-        unset($data['page_range']);
-        unset($data['page_total']);
-        unset($data['publisher_name']);
-        unset($data['publisher_city']);
         unset($data['date']);
-        unset($data['isbn']);
-        unset($data['document_id']);
-
         $this->assertDatabaseHas('editions', $data);
 
         $response->assertStatus(201)->assertJsonFragment($data);

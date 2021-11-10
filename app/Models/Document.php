@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Document extends Model
 {
-    use SoftDeletes;
     use HasFactory;
     use Searchable;
+    use SoftDeletes;
 
     protected $fillable = [
         'slug',
@@ -29,14 +29,6 @@ class Document extends Model
         'publication_permission',
         'notes',
         'input_type',
-        'input_by',
-        'input_date',
-        'proof_by',
-        'proof_date',
-        'format_by',
-        'format_date',
-        'post_by',
-        'post_date',
         'publication_approval',
         'views',
     ];
@@ -49,10 +41,6 @@ class Document extends Model
         'is_image' => 'boolean',
         'is_video' => 'boolean',
         'is_html' => 'boolean',
-        'input_date' => 'date',
-        'proof_date' => 'date',
-        'format_date' => 'date',
-        'post_date' => 'date',
     ];
 
     public function editions()
@@ -60,9 +48,9 @@ class Document extends Model
         return $this->hasMany(Edition::class);
     }
 
-    public function collections()
+    public function activities()
     {
-        return $this->belongsToMany(Collection::class);
+        return $this->hasMany(Activity::class);
     }
 
     public function languages()
@@ -70,23 +58,23 @@ class Document extends Model
         return $this->belongsToMany(Language::class);
     }
 
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
-    }
-
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
     }
 
-    public function creators()
-    {
-        return $this->belongsToMany(Creator::class);
-    }
-
     public function locations()
     {
         return $this->belongsToMany(Location::class);
+    }
+
+    public function collections()
+    {
+        return $this->belongsToMany(Collection::class);
+    }
+
+    public function creators()
+    {
+        return $this->belongsToMany(Creator::class);
     }
 }

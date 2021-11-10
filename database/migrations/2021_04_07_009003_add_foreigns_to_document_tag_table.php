@@ -15,14 +15,14 @@ class AddForeignsToDocumentTagTable extends Migration
     {
         Schema::table('document_tag', function (Blueprint $table) {
             $table
-                ->foreign('tag_id')
-                ->references('id')
-                ->on('tags');
-
-            $table
                 ->foreign('document_id')
                 ->references('id')
                 ->on('documents');
+
+            $table
+                ->foreign('tag_id')
+                ->references('id')
+                ->on('tags');
         });
     }
 
@@ -34,8 +34,8 @@ class AddForeignsToDocumentTagTable extends Migration
     public function down()
     {
         Schema::table('document_tag', function (Blueprint $table) {
-            $table->dropForeign(['tag_id']);
             $table->dropForeign(['document_id']);
+            $table->dropForeign(['tag_id']);
         });
     }
 }

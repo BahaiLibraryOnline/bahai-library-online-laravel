@@ -5,16 +5,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\TagController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\CreatorController;
+use App\Http\Controllers\Api\EditionController;
 use App\Http\Controllers\Api\DocumentController;
 use App\Http\Controllers\Api\LanguageController;
 use App\Http\Controllers\Api\LocationController;
+use App\Http\Controllers\Api\ActivityController;
 use App\Http\Controllers\Api\CollectionController;
 use App\Http\Controllers\Api\DocumentTagsController;
 use App\Http\Controllers\Api\TagDocumentsController;
-use App\Http\Controllers\Api\DocumentUsersController;
-use App\Http\Controllers\Api\UserDocumentsController;
+use App\Http\Controllers\Api\UserActivitiesController;
 use App\Http\Controllers\Api\DocumentEditionsController;
 use App\Http\Controllers\Api\DocumentCreatorsController;
 use App\Http\Controllers\Api\CreatorDocumentsController;
@@ -22,6 +22,7 @@ use App\Http\Controllers\Api\DocumentLanguagesController;
 use App\Http\Controllers\Api\DocumentLocationsController;
 use App\Http\Controllers\Api\LanguageDocumentsController;
 use App\Http\Controllers\Api\LocationDocumentsController;
+use App\Http\Controllers\Api\DocumentActivitiesController;
 use App\Http\Controllers\Api\DocumentCollectionsController;
 use App\Http\Controllers\Api\CollectionDocumentsController;
 
@@ -59,19 +60,15 @@ Route::name('api.')
             'store',
         ])->name('documents.editions.store');
 
-        // Document Collections
-        Route::get('/documents/{document}/collections', [
-            DocumentCollectionsController::class,
+        // Document Activities
+        Route::get('/documents/{document}/activities', [
+            DocumentActivitiesController::class,
             'index',
-        ])->name('documents.collections.index');
-        Route::post('/documents/{document}/collections/{collection}', [
-            DocumentCollectionsController::class,
+        ])->name('documents.activities.index');
+        Route::post('/documents/{document}/activities', [
+            DocumentActivitiesController::class,
             'store',
-        ])->name('documents.collections.store');
-        Route::delete('/documents/{document}/collections/{collection}', [
-            DocumentCollectionsController::class,
-            'destroy',
-        ])->name('documents.collections.destroy');
+        ])->name('documents.activities.store');
 
         // Document Languages
         Route::get('/documents/{document}/languages', [
@@ -87,20 +84,6 @@ Route::name('api.')
             'destroy',
         ])->name('documents.languages.destroy');
 
-        // Document Users
-        Route::get('/documents/{document}/users', [
-            DocumentUsersController::class,
-            'index',
-        ])->name('documents.users.index');
-        Route::post('/documents/{document}/users/{user}', [
-            DocumentUsersController::class,
-            'store',
-        ])->name('documents.users.store');
-        Route::delete('/documents/{document}/users/{user}', [
-            DocumentUsersController::class,
-            'destroy',
-        ])->name('documents.users.destroy');
-
         // Document Tags
         Route::get('/documents/{document}/tags', [
             DocumentTagsController::class,
@@ -115,20 +98,6 @@ Route::name('api.')
             'destroy',
         ])->name('documents.tags.destroy');
 
-        // Document Creators
-        Route::get('/documents/{document}/creators', [
-            DocumentCreatorsController::class,
-            'index',
-        ])->name('documents.creators.index');
-        Route::post('/documents/{document}/creators/{creator}', [
-            DocumentCreatorsController::class,
-            'store',
-        ])->name('documents.creators.store');
-        Route::delete('/documents/{document}/creators/{creator}', [
-            DocumentCreatorsController::class,
-            'destroy',
-        ])->name('documents.creators.destroy');
-
         // Document Locations
         Route::get('/documents/{document}/locations', [
             DocumentLocationsController::class,
@@ -142,6 +111,34 @@ Route::name('api.')
             DocumentLocationsController::class,
             'destroy',
         ])->name('documents.locations.destroy');
+
+        // Document Collections
+        Route::get('/documents/{document}/collections', [
+            DocumentCollectionsController::class,
+            'index',
+        ])->name('documents.collections.index');
+        Route::post('/documents/{document}/collections/{collection}', [
+            DocumentCollectionsController::class,
+            'store',
+        ])->name('documents.collections.store');
+        Route::delete('/documents/{document}/collections/{collection}', [
+            DocumentCollectionsController::class,
+            'destroy',
+        ])->name('documents.collections.destroy');
+
+        // Document Creators
+        Route::get('/documents/{document}/creators', [
+            DocumentCreatorsController::class,
+            'index',
+        ])->name('documents.creators.index');
+        Route::post('/documents/{document}/creators/{creator}', [
+            DocumentCreatorsController::class,
+            'store',
+        ])->name('documents.creators.store');
+        Route::delete('/documents/{document}/creators/{creator}', [
+            DocumentCreatorsController::class,
+            'destroy',
+        ])->name('documents.creators.destroy');
 
         Route::apiResource('collections', CollectionController::class);
 
@@ -177,19 +174,15 @@ Route::name('api.')
 
         Route::apiResource('users', UserController::class);
 
-        // User Documents
-        Route::get('/users/{user}/documents', [
-            UserDocumentsController::class,
+        // User Activities
+        Route::get('/users/{user}/activities', [
+            UserActivitiesController::class,
             'index',
-        ])->name('users.documents.index');
-        Route::post('/users/{user}/documents/{document}', [
-            UserDocumentsController::class,
+        ])->name('users.activities.index');
+        Route::post('/users/{user}/activities', [
+            UserActivitiesController::class,
             'store',
-        ])->name('users.documents.store');
-        Route::delete('/users/{user}/documents/{document}', [
-            UserDocumentsController::class,
-            'destroy',
-        ])->name('users.documents.destroy');
+        ])->name('users.activities.store');
 
         Route::apiResource('languages', LanguageController::class);
 
@@ -239,5 +232,7 @@ Route::name('api.')
             'destroy',
         ])->name('creators.documents.destroy');
 
-        Route::apiResource('searches', SearchController::class);
+        Route::apiResource('editions', EditionController::class);
+
+        Route::apiResource('activities', ActivityController::class);
     });

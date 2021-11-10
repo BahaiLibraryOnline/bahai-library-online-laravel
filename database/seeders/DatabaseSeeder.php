@@ -21,14 +21,14 @@ class DatabaseSeeder extends Seeder
                 'password' => \Hash::make('admin'),
             ]);
 
-        $this->call(LocationSeeder::class);
-        $this->call(TagSeeder::class);
-        $this->call(LanguageSeeder::class);
+        $this->call(ActivitySeeder::class);
         $this->call(CollectionSeeder::class);
         $this->call(CreatorSeeder::class);
-        $this->call(UserSeeder::class);
-        $this->call(SearchSeeder::class);
         $this->call(DocumentSeeder::class);
         $this->call(EditionSeeder::class);
+        $this->call(LanguageSeeder::class);
+        $this->call(LocationSeeder::class);
+        $this->call(TagSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }

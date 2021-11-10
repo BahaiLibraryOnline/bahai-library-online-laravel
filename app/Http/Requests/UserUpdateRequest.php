@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests;
 
 use Illuminate\Validation\Rule;
@@ -26,13 +25,8 @@ class UserUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:255', 'string'],
-            'email' => [
-                'required',
-                Rule::unique('users')->ignore($this->user->id, 'id'),
-                'email',
-            ],
+            'email' => ['required', 'unique:users', 'email'],
             'status' => ['required', 'in:contributor,editor,admin'],
-            'roles' => 'array',
         ];
     }
 }

@@ -6,6 +6,11 @@ return [
         'create' => 'Create',
         'edit' => 'Edit',
         'update' => 'Update',
+        'new' => 'New',
+        'cancel' => 'Cancel',
+        'save' => 'Save',
+        'delete' => 'Delete',
+        'delete_selected' => 'Delete selected',
         'search' => 'Search...',
         'back' => 'Back to Index',
         'are_you_sure' => 'Are you sure?',
@@ -18,6 +23,7 @@ return [
     'documents' => [
         'name' => 'Documents',
         'index_title' => 'Documents List',
+        'new_title' => 'New Document',
         'create_title' => 'Add A Document',
         'edit_title' => 'Edit A Document',
         'show_title' => 'Show A Document',
@@ -37,14 +43,6 @@ return [
             'publication_permission' => 'Publication Permission',
             'notes' => 'Notes',
             'input_type' => 'Input Type',
-            'input_by' => 'Input By',
-            'input_date' => 'Input Date',
-            'proof_by' => 'Proof By',
-            'proof_date' => 'Proof Date',
-            'format_by' => 'Format By',
-            'format_date' => 'Format Date',
-            'post_by' => 'Post By',
-            'post_date' => 'Post Date',
             'publication_approval' => 'Publication Approval',
             'views' => 'Views',
         ],
@@ -53,6 +51,7 @@ return [
     'collections' => [
         'name' => 'Collections',
         'index_title' => 'Collections List',
+        'new_title' => 'New Collection',
         'create_title' => 'Create Collection',
         'edit_title' => 'Edit Collection',
         'show_title' => 'Show Collection',
@@ -66,6 +65,7 @@ return [
     'tags' => [
         'name' => 'Tags',
         'index_title' => 'Tags List',
+        'new_title' => 'New Tag',
         'create_title' => 'Create Tag',
         'edit_title' => 'Edit Tag',
         'show_title' => 'Show Tag',
@@ -77,6 +77,7 @@ return [
     'users' => [
         'name' => 'Users',
         'index_title' => 'Users List',
+        'new_title' => 'New User',
         'create_title' => 'Create User',
         'edit_title' => 'Edit User',
         'show_title' => 'Show User',
@@ -91,6 +92,7 @@ return [
     'languages' => [
         'name' => 'Languages',
         'index_title' => 'Languages List',
+        'new_title' => 'New Language',
         'create_title' => 'Create Language',
         'edit_title' => 'Edit Language',
         'show_title' => 'Show Language',
@@ -103,6 +105,7 @@ return [
     'locations' => [
         'name' => 'Locations',
         'index_title' => 'Locations List',
+        'new_title' => 'New Location',
         'create_title' => 'Create Location',
         'edit_title' => 'Edit Location',
         'show_title' => 'Show Location',
@@ -116,33 +119,24 @@ return [
     'creators' => [
         'name' => 'Creators',
         'index_title' => 'Creators List',
+        'new_title' => 'New Creator',
         'create_title' => 'Create Creator',
         'edit_title' => 'Edit Creator',
         'show_title' => 'Show Creator',
         'inputs' => [
             'first_names' => 'First Names',
             'last_names' => 'Last Names',
-            'author' => 'Author',
-            'editor' => 'Editor',
-            'translator' => 'Translator',
-            'compiler' => 'Compiler',
-        ],
-    ],
-
-    'searches' => [
-        'name' => 'Searches',
-        'index_title' => 'Searches List',
-        'create_title' => 'Create Search',
-        'edit_title' => 'Edit Search',
-        'show_title' => 'Show Search',
-        'inputs' => [
-            'query' => 'Query',
+            'is_author' => 'Is Author',
+            'is_editor' => 'Is Editor',
+            'is_translator' => 'Is Translator',
+            'is_compiler' => 'Is Compiler',
         ],
     ],
 
     'editions' => [
         'name' => 'Editions',
         'index_title' => 'Editions List',
+        'new_title' => 'New Edition',
         'create_title' => 'Create Edition',
         'edit_title' => 'Edit Edition',
         'show_title' => 'Show Edition',
@@ -158,6 +152,21 @@ return [
             'date' => 'Date',
             'isbn' => 'Isbn',
             'document_id' => 'Document',
+        ],
+    ],
+
+    'activities' => [
+        'name' => 'Activities',
+        'index_title' => 'Activities List',
+        'new_title' => 'New Activity',
+        'create_title' => 'Create Activity',
+        'edit_title' => 'Edit Activity',
+        'show_title' => 'Show Activity',
+        'inputs' => [
+            'document_id' => 'Document',
+            'user_id' => 'User',
+            'activity_type' => 'Activity Type',
+            'comment' => 'Comment',
         ],
     ],
 ];

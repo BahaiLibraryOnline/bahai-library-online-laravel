@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -32,7 +31,7 @@ class EditionStoreRequest extends FormRequest
             'page_total' => ['nullable', 'max:255'],
             'publisher_name' => ['nullable', 'max:255', 'string'],
             'publisher_city' => ['nullable', 'max:255', 'string'],
-            'date' => ['nullable', 'date', 'date'],
+            'date' => ['nullable', 'date'],
             'isbn' => ['nullable', 'max:255', 'string'],
             'document_id' => ['required', 'exists:documents,id'],
         ];

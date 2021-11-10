@@ -68,6 +68,18 @@ class UserPolicy
     }
 
     /**
+     * Determine whether the user can delete multiple instances of the model.
+     *
+     * @param  App\Models\User  $user
+     * @param  App\Models\User  $model
+     * @return mixed
+     */
+    public function deleteAny(User $user)
+    {
+        return $user->isSuperAdmin();
+    }
+
+    /**
      * Determine whether the user can restore the model.
      *
      * @param  App\Models\User  $user
