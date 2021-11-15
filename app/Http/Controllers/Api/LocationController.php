@@ -10,12 +10,18 @@ use App\Http\Resources\LocationCollection;
 use App\Http\Requests\LocationStoreRequest;
 use App\Http\Requests\LocationUpdateRequest;
 
+use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
+use App\OpenApi\Responses\SuccessfulResponse;
+
+#[OpenApi\PathItem]
 class LocationController extends Controller
 {
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['location'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function index(Request $request)
     {
         $this->authorize('view-any', Location::class);
@@ -33,6 +39,8 @@ class LocationController extends Controller
      * @param \App\Http\Requests\LocationStoreRequest $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['location'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function store(LocationStoreRequest $request)
     {
         $this->authorize('create', Location::class);
@@ -49,6 +57,8 @@ class LocationController extends Controller
      * @param \App\Models\Location $location
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['location'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function show(Request $request, Location $location)
     {
         $this->authorize('view', $location);
@@ -61,6 +71,8 @@ class LocationController extends Controller
      * @param \App\Models\Location $location
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['location'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function update(LocationUpdateRequest $request, Location $location)
     {
         $this->authorize('update', $location);
@@ -77,6 +89,8 @@ class LocationController extends Controller
      * @param \App\Models\Location $location
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['location'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function destroy(Request $request, Location $location)
     {
         $this->authorize('delete', $location);

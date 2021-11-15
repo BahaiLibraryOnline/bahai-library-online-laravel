@@ -3,19 +3,28 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Document;
+use App\OpenApi\Responses\Document\SuccessfulDocumentsResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DocumentResource;
 use App\Http\Resources\DocumentCollection;
 use App\Http\Requests\DocumentStoreRequest;
 use App\Http\Requests\DocumentUpdateRequest;
+use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
+use App\OpenApi\Responses\SuccessfulResponse;
 
+#[OpenApi\PathItem]
 class DocumentController extends Controller
 {
     /**
+     * List documents
+     *
+     * Returns a paginated collection of documents, most recent first
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['document'])]
+    #[OpenApi\Response(factory: SuccessfulDocumentsResponse::class)]
     public function index(Request $request)
     {
         $this->authorize('view-any', Document::class);
@@ -33,6 +42,7 @@ class DocumentController extends Controller
      * @param \App\Http\Requests\DocumentStoreRequest $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['document'])]
     public function store(DocumentStoreRequest $request)
     {
         $this->authorize('create', Document::class);
@@ -48,7 +58,8 @@ class DocumentController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Document $document
      * @return \Illuminate\Http\Response
-     */
+    */
+    #[OpenApi\Operation(tags: ['document'])]
     public function show(Request $request, Document $document)
     {
         $this->authorize('view', $document);
@@ -60,7 +71,8 @@ class DocumentController extends Controller
      * @param \App\Http\Requests\DocumentUpdateRequest $request
      * @param \App\Models\Document $document
      * @return \Illuminate\Http\Response
-     */
+    */
+    #[OpenApi\Operation(tags: ['document'])]
     public function update(DocumentUpdateRequest $request, Document $document)
     {
         $this->authorize('update', $document);
@@ -76,7 +88,8 @@ class DocumentController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Document $document
      * @return \Illuminate\Http\Response
-     */
+    */
+    #[OpenApi\Operation(tags: ['document'])]
     public function destroy(Request $request, Document $document)
     {
         $this->authorize('delete', $document);

@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DocumentCollection;
 
+use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
+use App\OpenApi\Responses\SuccessfulResponse;
+
+#[OpenApi\PathItem]
 class LanguageDocumentsController extends Controller
 {
     /**
@@ -14,6 +18,8 @@ class LanguageDocumentsController extends Controller
      * @param \App\Models\Language $language
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['language-documents'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function index(Request $request, Language $language)
     {
         $this->authorize('view', $language);
@@ -35,6 +41,8 @@ class LanguageDocumentsController extends Controller
      * @param \App\Models\Document $document
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['language-documents'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function store(
         Request $request,
         Language $language,
@@ -53,6 +61,8 @@ class LanguageDocumentsController extends Controller
      * @param \App\Models\Document $document
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['language-documents'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function destroy(
         Request $request,
         Language $language,

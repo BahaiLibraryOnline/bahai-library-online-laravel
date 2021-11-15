@@ -6,7 +6,10 @@ use App\Models\Document;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\TagCollection;
+use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
+use App\OpenApi\Responses\SuccessfulResponse;
 
+#[OpenApi\PathItem]
 class DocumentTagsController extends Controller
 {
     /**
@@ -14,6 +17,8 @@ class DocumentTagsController extends Controller
      * @param \App\Models\Document $document
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['document-tags'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function index(Request $request, Document $document)
     {
         $this->authorize('view', $document);
@@ -35,6 +40,8 @@ class DocumentTagsController extends Controller
      * @param \App\Models\Tag $tag
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['document-tags'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function store(Request $request, Document $document, Tag $tag)
     {
         $this->authorize('update', $document);
@@ -50,6 +57,8 @@ class DocumentTagsController extends Controller
      * @param \App\Models\Tag $tag
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['document-tags'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function destroy(Request $request, Document $document, Tag $tag)
     {
         $this->authorize('update', $document);

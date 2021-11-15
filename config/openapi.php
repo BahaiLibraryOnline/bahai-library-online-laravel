@@ -9,14 +9,14 @@ return [
         'default' => [
 
             'info' => [
-                'title' => config('app.name'),
+                'title' => "Baha'i Library Online",
                 'description' => null,
-                'version' => '1.0.0',
+                'version' => '0.0.0',
             ],
 
             'servers' => [
                 [
-                    'url' => env('APP_URL'),
+                    'url' => env('https://0.0.0.0'),
                 ],
             ],
 

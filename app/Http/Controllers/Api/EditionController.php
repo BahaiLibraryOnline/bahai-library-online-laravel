@@ -10,12 +10,18 @@ use App\Http\Resources\EditionCollection;
 use App\Http\Requests\EditionStoreRequest;
 use App\Http\Requests\EditionUpdateRequest;
 
+use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
+use App\OpenApi\Responses\SuccessfulResponse;
+
+#[OpenApi\PathItem]
 class EditionController extends Controller
 {
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['edition'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function index(Request $request)
     {
         $this->authorize('view-any', Edition::class);
@@ -33,6 +39,8 @@ class EditionController extends Controller
      * @param \App\Http\Requests\EditionStoreRequest $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['edition'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function store(EditionStoreRequest $request)
     {
         $this->authorize('create', Edition::class);
@@ -49,6 +57,8 @@ class EditionController extends Controller
      * @param \App\Models\Edition $edition
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['edition'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function show(Request $request, Edition $edition)
     {
         $this->authorize('view', $edition);
@@ -61,6 +71,8 @@ class EditionController extends Controller
      * @param \App\Models\Edition $edition
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['edition'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function update(EditionUpdateRequest $request, Edition $edition)
     {
         $this->authorize('update', $edition);
@@ -77,6 +89,8 @@ class EditionController extends Controller
      * @param \App\Models\Edition $edition
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['edition'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function destroy(Request $request, Edition $edition)
     {
         $this->authorize('delete', $edition);

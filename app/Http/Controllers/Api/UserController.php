@@ -11,12 +11,18 @@ use App\Http\Resources\UserCollection;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 
+use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
+use App\OpenApi\Responses\SuccessfulResponse;
+
+#[OpenApi\PathItem]
 class UserController extends Controller
 {
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['user'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function index(Request $request)
     {
         $this->authorize('view-any', User::class);
@@ -34,6 +40,8 @@ class UserController extends Controller
      * @param \App\Http\Requests\UserStoreRequest $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['user'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function store(UserStoreRequest $request)
     {
         $this->authorize('create', User::class);
@@ -52,6 +60,8 @@ class UserController extends Controller
      * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['user'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function show(Request $request, User $user)
     {
         $this->authorize('view', $user);
@@ -64,6 +74,8 @@ class UserController extends Controller
      * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['user'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function update(UserUpdateRequest $request, User $user)
     {
         $this->authorize('update', $user);
@@ -86,6 +98,8 @@ class UserController extends Controller
      * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['user'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function destroy(Request $request, User $user)
     {
         $this->authorize('delete', $user);

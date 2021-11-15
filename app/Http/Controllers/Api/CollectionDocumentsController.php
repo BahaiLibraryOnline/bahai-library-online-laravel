@@ -6,7 +6,10 @@ use App\Models\Collection;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DocumentCollection;
+use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
+use App\OpenApi\Responses\SuccessfulResponse;
 
+#[OpenApi\PathItem]
 class CollectionDocumentsController extends Controller
 {
     /**
@@ -14,6 +17,8 @@ class CollectionDocumentsController extends Controller
      * @param \App\Models\Collection $collection
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['collection-documents'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function index(Request $request, Collection $collection)
     {
         $this->authorize('view', $collection);
@@ -35,6 +40,8 @@ class CollectionDocumentsController extends Controller
      * @param \App\Models\Document $document
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['collection-documents'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function store(
         Request $request,
         Collection $collection,
@@ -53,6 +60,8 @@ class CollectionDocumentsController extends Controller
      * @param \App\Models\Document $document
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['collection-documents'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function destroy(
         Request $request,
         Collection $collection,

@@ -9,13 +9,18 @@ use App\Http\Resources\ActivityResource;
 use App\Http\Resources\ActivityCollection;
 use App\Http\Requests\ActivityStoreRequest;
 use App\Http\Requests\ActivityUpdateRequest;
+use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
+use App\OpenApi\Responses\SuccessfulResponse;
 
+#[OpenApi\PathItem]
 class ActivityController extends Controller
 {
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['activity'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function index(Request $request)
     {
         $this->authorize('view-any', Activity::class);
@@ -33,6 +38,8 @@ class ActivityController extends Controller
      * @param \App\Http\Requests\ActivityStoreRequest $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['activity'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function store(ActivityStoreRequest $request)
     {
         $this->authorize('create', Activity::class);
@@ -49,6 +56,8 @@ class ActivityController extends Controller
      * @param \App\Models\Activity $activity
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['activity'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function show(Request $request, Activity $activity)
     {
         $this->authorize('view', $activity);
@@ -61,6 +70,8 @@ class ActivityController extends Controller
      * @param \App\Models\Activity $activity
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['activity'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function update(ActivityUpdateRequest $request, Activity $activity)
     {
         $this->authorize('update', $activity);
@@ -77,6 +88,8 @@ class ActivityController extends Controller
      * @param \App\Models\Activity $activity
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['activity'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function destroy(Request $request, Activity $activity)
     {
         $this->authorize('delete', $activity);

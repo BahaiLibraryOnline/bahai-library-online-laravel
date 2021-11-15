@@ -10,12 +10,18 @@ use App\Http\Resources\TagCollection;
 use App\Http\Requests\TagStoreRequest;
 use App\Http\Requests\TagUpdateRequest;
 
+use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
+use App\OpenApi\Responses\SuccessfulResponse;
+
+#[OpenApi\PathItem]
 class TagController extends Controller
 {
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['tag'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function index(Request $request)
     {
         $this->authorize('view-any', Tag::class);
@@ -33,6 +39,8 @@ class TagController extends Controller
      * @param \App\Http\Requests\TagStoreRequest $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['tag'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function store(TagStoreRequest $request)
     {
         $this->authorize('create', Tag::class);
@@ -49,6 +57,8 @@ class TagController extends Controller
      * @param \App\Models\Tag $tag
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['tag'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function show(Request $request, Tag $tag)
     {
         $this->authorize('view', $tag);
@@ -61,6 +71,8 @@ class TagController extends Controller
      * @param \App\Models\Tag $tag
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['tag'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function update(TagUpdateRequest $request, Tag $tag)
     {
         $this->authorize('update', $tag);
@@ -77,6 +89,8 @@ class TagController extends Controller
      * @param \App\Models\Tag $tag
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['tag'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function destroy(Request $request, Tag $tag)
     {
         $this->authorize('delete', $tag);

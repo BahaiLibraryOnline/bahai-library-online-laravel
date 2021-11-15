@@ -6,7 +6,10 @@ use App\Models\Document;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DocumentCollection;
+use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
+use App\OpenApi\Responses\SuccessfulResponse;
 
+#[OpenApi\PathItem]
 class CreatorDocumentsController extends Controller
 {
     /**
@@ -14,6 +17,8 @@ class CreatorDocumentsController extends Controller
      * @param \App\Models\Creator $creator
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['creator-documents'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function index(Request $request, Creator $creator)
     {
         $this->authorize('view', $creator);
@@ -35,6 +40,8 @@ class CreatorDocumentsController extends Controller
      * @param \App\Models\Document $document
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['creator-documents'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function store(
         Request $request,
         Creator $creator,
@@ -53,6 +60,8 @@ class CreatorDocumentsController extends Controller
      * @param \App\Models\Document $document
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['creator-documents'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function destroy(
         Request $request,
         Creator $creator,
