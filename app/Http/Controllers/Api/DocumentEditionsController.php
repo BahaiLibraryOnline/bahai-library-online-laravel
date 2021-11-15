@@ -8,6 +8,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\EditionResource;
 use App\Http\Resources\EditionCollection;
 
+use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
+use App\OpenApi\Responses\SuccessfulResponse;
+
+#[OpenApi\PathItem]
 class DocumentEditionsController extends Controller
 {
     /**
@@ -15,6 +19,8 @@ class DocumentEditionsController extends Controller
      * @param \App\Models\Document $document
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['document--editions'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function index(Request $request, Document $document)
     {
         $this->authorize('view', $document);
@@ -35,6 +41,8 @@ class DocumentEditionsController extends Controller
      * @param \App\Models\Document $document
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['document--editions'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function store(Request $request, Document $document)
     {
         $this->authorize('create', Edition::class);

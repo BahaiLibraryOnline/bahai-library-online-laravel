@@ -9,13 +9,18 @@ use App\Http\Resources\CreatorResource;
 use App\Http\Resources\CreatorCollection;
 use App\Http\Requests\CreatorStoreRequest;
 use App\Http\Requests\CreatorUpdateRequest;
+use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
+use App\OpenApi\Responses\SuccessfulResponse;
 
+#[OpenApi\PathItem]
 class CreatorController extends Controller
 {
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['creator'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function index(Request $request)
     {
         $this->authorize('view-any', Creator::class);
@@ -33,6 +38,8 @@ class CreatorController extends Controller
      * @param \App\Http\Requests\CreatorStoreRequest $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['creator'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function store(CreatorStoreRequest $request)
     {
         $this->authorize('create', Creator::class);
@@ -49,6 +56,8 @@ class CreatorController extends Controller
      * @param \App\Models\Creator $creator
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['creator'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function show(Request $request, Creator $creator)
     {
         $this->authorize('view', $creator);
@@ -61,6 +70,8 @@ class CreatorController extends Controller
      * @param \App\Models\Creator $creator
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['creator'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function update(CreatorUpdateRequest $request, Creator $creator)
     {
         $this->authorize('update', $creator);
@@ -77,6 +88,8 @@ class CreatorController extends Controller
      * @param \App\Models\Creator $creator
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['creator'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function destroy(Request $request, Creator $creator)
     {
         $this->authorize('delete', $creator);

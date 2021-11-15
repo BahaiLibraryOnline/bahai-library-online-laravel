@@ -10,12 +10,18 @@ use App\Http\Resources\LanguageCollection;
 use App\Http\Requests\LanguageStoreRequest;
 use App\Http\Requests\LanguageUpdateRequest;
 
+use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
+use App\OpenApi\Responses\SuccessfulResponse;
+
+#[OpenApi\PathItem]
 class LanguageController extends Controller
 {
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['language'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function index(Request $request)
     {
         $this->authorize('view-any', Language::class);
@@ -33,6 +39,8 @@ class LanguageController extends Controller
      * @param \App\Http\Requests\LanguageStoreRequest $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['language'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function store(LanguageStoreRequest $request)
     {
         $this->authorize('create', Language::class);
@@ -49,6 +57,8 @@ class LanguageController extends Controller
      * @param \App\Models\Language $language
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['language'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function show(Request $request, Language $language)
     {
         $this->authorize('view', $language);
@@ -61,6 +71,8 @@ class LanguageController extends Controller
      * @param \App\Models\Language $language
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['language'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function update(LanguageUpdateRequest $request, Language $language)
     {
         $this->authorize('update', $language);
@@ -77,6 +89,8 @@ class LanguageController extends Controller
      * @param \App\Models\Language $language
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['language'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function destroy(Request $request, Language $language)
     {
         $this->authorize('delete', $language);

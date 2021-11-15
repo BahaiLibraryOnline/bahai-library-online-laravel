@@ -9,13 +9,18 @@ use App\Http\Resources\CollectionResource;
 use App\Http\Resources\CollectionCollection;
 use App\Http\Requests\CollectionStoreRequest;
 use App\Http\Requests\CollectionUpdateRequest;
+use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
+use App\OpenApi\Responses\SuccessfulResponse;
 
+#[OpenApi\PathItem]
 class CollectionController extends Controller
 {
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['collection'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function index(Request $request)
     {
         $this->authorize('view-any', Collection::class);
@@ -33,6 +38,8 @@ class CollectionController extends Controller
      * @param \App\Http\Requests\CollectionStoreRequest $request
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['collection'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function store(CollectionStoreRequest $request)
     {
         $this->authorize('create', Collection::class);
@@ -49,6 +56,8 @@ class CollectionController extends Controller
      * @param \App\Models\Collection $collection
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['collection'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function show(Request $request, Collection $collection)
     {
         $this->authorize('view', $collection);
@@ -61,6 +70,8 @@ class CollectionController extends Controller
      * @param \App\Models\Collection $collection
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['collection'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function update(
         CollectionUpdateRequest $request,
         Collection $collection
@@ -79,6 +90,8 @@ class CollectionController extends Controller
      * @param \App\Models\Collection $collection
      * @return \Illuminate\Http\Response
      */
+    #[OpenApi\Operation(tags: ['collection'])]
+    #[OpenApi\Response(factory: SuccessfulResponse::class)]
     public function destroy(Request $request, Collection $collection)
     {
         $this->authorize('delete', $collection);
